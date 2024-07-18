@@ -1,7 +1,7 @@
 import { ping } from './services'
-import { show } from './views/message'
+import { show } from './views/bugTracker'
 
-const supportedAPI = ['init', 'message']; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
+const supportedAPI = ['init', 'track' ]; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
 
 /**
     The main entry of the application
@@ -22,6 +22,7 @@ function app(window) {
         for (var i = 0; i < queue.length; i++) {
             if (queue[i][0].toLowerCase() == 'init') {
                 configurations = extendObject(configurations, queue[i][1]);
+                show();
                 console.log('JS-Widget started', configurations);
             }
             else
@@ -33,6 +34,8 @@ function app(window) {
     // for widget's API calls
     globalObject = apiHandler;
     globalObject.configurations = configurations;
+
+    
 }
 
 /**
@@ -48,7 +51,7 @@ function apiHandler(api, params) {
 
     switch (api) {
         // TODO: add API implementation
-        case 'message':
+        case 'track':
             show(params);
             break;
         default:

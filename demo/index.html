@@ -8,14 +8,14 @@
     <p>Orci purus ante excepteur nunc nascetur rhoncus taciti ut. Ornare vitae sed. Amet suspendisse integer rutrum aliquet
         venenatis. Nec sed nullam mauris magna vel pretium non tristique. Porta justo ac dictumst aliquip blandit. Libero
         nec eu dolor eget volutpat. Magna nulla neque. Fames tempus lorem duis orci ipsum.</p>
-    <script>
-        (function (w,d,s,o,f,js,fjs) {
-            w['JS-Widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
-            js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
-            js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-        }(window, document, 'script', 'mw', './widget.js'));
-        mw('init', { someConfiguration: 42 });
-       //a sample api call mw('track');
-    </script>
+        <script>
+            (function (w,d,s,o,f,js,fjs) {
+                w['JS-Widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+                js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+                js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+            }(window, document, 'script', 'mw', 'https://cdn.jsdelivr.net/gh/nicktheuser123/bugTracker@v1.0.2/scripts.js'));
+            mw('init', { someConfiguration: 42 });
+           //a sample api call mw('track');
+        </script>
 </body>
 </html>

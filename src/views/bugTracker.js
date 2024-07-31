@@ -5,7 +5,21 @@ let elements = [];
 let body;
 let fabricCanvas;
 
+
 export function show(text) {
+    let script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js';
+    script.integrity = 'sha512-UcDEnmFoMh0dYHu0wGsf5SKB7z7i5j3GuXHCnb3i4s44hfctoLihr896bxM0zL7jGkcHQXXrJsFIL62ehtd6yQ==';
+    script.crossOrigin = 'anonymous';
+    script.referrerPolicy = 'no-referrer';
+    
+    let scriptFabric = document.createElement('script');
+    scriptFabric.src = 'https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js';
+    
+    document.head.appendChild(script);
+    document.head.appendChild(scriptFabric);
+
+
     // convert plain HTML string into DOM elements
     let temporary = document.createElement('div');
     temporary.innerHTML = html;
@@ -21,7 +35,7 @@ export function show(text) {
     
 
             document.getElementById('bug-report-tab').addEventListener('click', function() {
-                console.log("RUNNING Indside bug report tab")
+                
                 const bugReport = document.getElementById('bug-report');
                 const bugReportTab = document.getElementById('bug-report-tab');
 
@@ -31,9 +45,15 @@ export function show(text) {
                 } else {
                     bugReport.classList.add('open');
                     bugReportTab.style.display = 'none';
+                    bugReport.style.visibility = 'hidden';
+                    bugReportTab.style.visibility = 'hidden';
+
                     html2canvas(document.body, { useCORS: true, logging: true }).then(canvas => {
                         const img = document.getElementById('screenshot');
                         img.src = canvas.toDataURL();
+
+                        bugReport.style.visibility = 'visible';
+                        bugReportTab.style.visibility = 'visible';
                     }).catch(error => console.error('Error capturing screenshot:', error));
                 }
             });
